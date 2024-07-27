@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="col-md-6 offset-md-3">
+    <h1>Hibajegy felvétele</h1>
+        <br>
+
+    <form method="POST" action="{% url 'add_record' %}">
+    <!--    https://www.geeksforgeeks.org/csrf-token-in-django/-->
+        {% csrf_token %}
+
+        {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Felvétel</button>
+
+    </form>
+</div>
+
+
+
+
+{% endblock %}

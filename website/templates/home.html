@@ -6,6 +6,7 @@
 
 
 {% if user.is_authenticated %}
+<br>
 <table class="table table-striped table-hover table-bordered">
   <thead>
     <tr>
@@ -13,6 +14,7 @@
       <th scope="col">Hiba típusa</th>
       <th scope="col">Rövid leírása</th>
       <th scope="col">Priorítása</th>
+      <th scope="col">Aktív a hiba</th>
       <th scope="col">Létrehozva</th>
       <th scope="col">ID</th>
     </tr>
@@ -23,10 +25,11 @@
     <tr>
         <td>{{ record.leado_neve }}</td>
         <td>{{ record.hardware_vagy_szotver_hiba }}</td>
-        <td>{{ record.rovid_leiras }}</td>
+        <td><a href="{% url 'record' record.id %}">{{ record.rovid_leiras }}</a></td>
         <td>{{ record.prioritasa }}</td>
+        <td>{{ record.aktiv_a_hiba }}</td>
         <td>{{ record.letrehozva }}</td>
-        <td>{{ record.id }}</td>
+        <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
     </tr>
     {% endfor %}
 
@@ -37,24 +40,25 @@
 
 
 {% else %}
-<h1>Login</h1>
-    <br>
+<div class="col-md-6 offset-md-3">
+    <h1>Login</h1>
+        <br>
 
-<form method="POST" action="{% url 'home' %}">
-<!--    https://www.geeksforgeeks.org/csrf-token-in-django/-->
-    {% csrf_token %}
-  <div class="mb-3">
+    <form method="POST" action="{% url 'home' %}">
+    <!--    https://www.geeksforgeeks.org/csrf-token-in-django/-->
+        {% csrf_token %}
+      <div class="mb-3">
 
-    <input type="text" class="form-control" name="username", placeholder="Username" required>
+        <input type="text" class="form-control" name="username", placeholder="Username" required>
 
-  </div>
-  <div class="mb-3">
-    <input type="password" class="form-control" name="password", placeholder="Password" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" name="password", placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
 
-</form>
-
+    </form>
+</div>
 
 
 {% endif %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="card">
+    <h5 class="card-header">{{ fault_record.leado_neve }}</h5>
+    <div class="card-body">
+    <h5 class="card-title">Prioritás: {{ fault_record.prioritasa }}</h5>
+    <p class="card-text"><strong>Hiba jellege: </strong> {{ fault_record.hardware_vagy_szotver_hiba }}</p>
+    <p class="card-text"><strong>Hiba rövid leírása:</strong> {{ fault_record.rovid_leiras }}</p>
+    <p class="card-text"><strong>Hibajegy létrehozásának dátuma:</strong> {{ fault_record.letrehozva }}</p>
+    <p class="card-text"><strong>ID:</strong> {{ fault_record.id }}</p>
+        <p class="card-text"><strong>Aktív a hiba:</strong> {{ fault_record.aktiv_a_hiba }}</p>
+  </div>
+</div>
+<br>
+<a href="{% url 'update_record' fault_record.id %}" class="btn btn-info">Módosítás</a>
+<a href="{% url 'delete_record' fault_record.id %}" class="btn btn-danger">Törlés</a>
+<a href="{% url 'home'%}" class="btn btn-secondary">Vissza</a>
+
+
+
+
+{% endblock %}

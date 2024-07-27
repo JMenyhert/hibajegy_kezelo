@@ -8,6 +8,7 @@ class Problem(models.Model):
     hardware_vagy_szotver_hiba = models.CharField(max_length=50)
     rovid_leiras = models.CharField(max_length=300)
     prioritasa = models.CharField(max_length=30)
+    aktiv_a_hiba = models.CharField(max_length=30, default="Igen", editable=True)
 
     def __str__(self):
         return (f"{self.leado_neve} {self.prioritasa}")
